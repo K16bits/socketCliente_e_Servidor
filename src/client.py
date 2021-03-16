@@ -1,13 +1,14 @@
 import socket
-HOST = 'localhost'     # Endereco IP do Servidor
-PORT = 3000            # Porta que o Servidor esta
-tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+HOST = ''     
+PORT = 3000       
+tcp = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 dest = (HOST, PORT)
-tcp.connect(dest)
 
-print ('Cliente se conector com o servidor\n')
-msg = input("envie sua msg ao servidor: ").encode('utf-8')
-tcp.send (msg)
-msg = input("envie sua msg ao servidor: ")
+print ('Client iniciado...')
+msgClient = ("msg do cliente").encode('UTF-8')
+tcp.sendto(msgClient,dest)
+
+msgServer,addrServer = tcp.recvfrom(1024)
+print(msgServer)
 
 tcp.close()
