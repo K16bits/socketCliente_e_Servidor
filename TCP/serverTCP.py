@@ -7,7 +7,7 @@ orig = (HOST,PORT)
 tcp.bind(orig)
 tcp.listen(1)
 
-print("Server TCP está rodando...");
+print("Server TCP está rodando...")
 while True:
     con,client = tcp.accept()
     print("Cliente conectado: ",client)
